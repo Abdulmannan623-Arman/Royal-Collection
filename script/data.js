@@ -21,6 +21,7 @@ const PRODUCTS = [
         image: "images/quran.jpg",
         oldPrice: 499,
         newPrice: 399,
+        description: "Hifz Quran",
         category: "quran"
     },
     {
