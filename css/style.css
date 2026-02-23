@@ -98,7 +98,7 @@
 
 /* Card */
 .category-card {
-  min-width: 80px;
+  min-width: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
