@@ -86,7 +86,7 @@
 
 .category-container {
   display: flex;
-  gap: 14px;
+  gap: 28px;
   overflow-x: auto;
   scrollbar-width: none;
   scroll-behavior: smooth;
@@ -129,6 +129,9 @@
 }
 
 @media (max-width: 768px) {
+  .category-container {
+    gap: 14px;
+  }
 
   .category-card {
     gap: 0;
