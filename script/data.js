@@ -1,36 +1,39 @@
 const PRODUCTS = [
     {
         id: 1,
-        name: "Ajmal Royal Misk Rijali Attar",
-        image: "images/shopping.webp",
-        oldPrice: 1499,
-        newPrice: 999,
+        name: "Ajmal Impress Attar 10ml Alcohol Free",
+        image: "images/impress.PNG",
+        oldPrice: 499,
+        newPrice: 440,
+        description: "Ajmal Perfumes, a name that tells a story of heritage, enterprise and passion.At Ajmal Perfumes we have crafted the art of perfumery into a science- such that we craft everlasting memories through our fragrance.",
         category: "attar"
     },
     {
         id: 2,
-        name: "Islamic Cap Namazi Topi",
-        image: "images/tupi.jpg",
-        oldPrice: 269,
-        newPrice: 229,
-        category: "cap"
+        name: "Ajmal Al-Wafi Attar Concentrated Perfume 10ml",
+        image: "images/al wafi.PNG",
+        oldPrice: 499,
+        newPrice: 440,
+        description: "A Spicy Floral accord designed for men and women who are looking to add to their charismatic Designed with Top Notes comprised of Cinnamon and Saffron.",
+        category: "attar"
     },
     {
         id: 3,
-        name: "Hifz Quran 15 Lines",
-        image: "images/quran.jpg",
-        oldPrice: 499,
-        newPrice: 399,
-        description: "Hifz Quran",
-        category: "quran"
+        name: "SRF RAEES 20ML ATTAR (Floral, Saffron, Oud)",
+        image: "images/raees.PNG",
+        oldPrice: 280,
+        newPrice: 200,
+        description: "Pure Enchantment of Saffron, Musk, Oudh notes of the charming Raees, and finesse of Fruity, Peach, Coconut, Amber in Aaisha.",
+        category: "attar"
     },
     {
         id: 4,
-        name: "Janamaz",
-        image: "images/Janamaz.jpg",
-        oldPrice: 599,
-        newPrice: 510,
-        category: "janamaz"
+        name: "Al-Nuaim Delicia a Premium Range Attar (Floral, Rose, Saffron, Spicy)",
+        image: "images/delicia.PNG",
+        oldPrice: 250,
+        newPrice: 180,
+        description: "Attarr Roll On 9.9ml Floral Attarr (Spicy, Woody) | Long Lasting Fragrance | Alcoholl-Free | For Men & Women",
+        category: "attar"
     },
     {
         id: 5,

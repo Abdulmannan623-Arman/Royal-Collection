@@ -19,15 +19,15 @@ function renderProduct(product) {
             <div class="product-info">
                 <h2 class="product-title">${product.name}</h2>
 
+                <p class="product-description">
+                    ${product.description}
+                </p>
+
                 <div class="price-box">
                     <span class="discount">${discount}% OFF</span>
                     <span class="old-price">₹${product.oldPrice}</span>
                     <span class="new-price">₹${product.newPrice}</span>
                 </div>
-
-                <p class="product-description">
-                    ${product.description}
-                </p>
 
                 <button id="addToCart">Add to Cart</button>
             </div>
