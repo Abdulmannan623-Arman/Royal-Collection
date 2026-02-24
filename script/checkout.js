@@ -1,3 +1,5 @@
+const WHATSAPP_NUMBER = "919083052120";
+
 const summaryContainer = document.getElementById("productSummary");
 
 const params = new URLSearchParams(window.location.search);
@@ -112,29 +114,62 @@ placeOrderBtn.addEventListener("click", () => {
     createOrder();
 });
 
+function generateOrderId() {
+    return "RC" + Math.floor(100000 + Math.random() * 900000);
+}
+
 function createOrder() {
 
     const product = getProductById(productId);
 
-    const order = {
-        orderId: generateOrderId(),
+    if (!product) {
+        alert("Product not found!");
+        return;
+    }
+
+    const savedAddress = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+    const orderId = generateOrderId();
+
+    const message = `
+🛍 *New Order - Royal Collection*
+
+🆔 Order ID: ${orderId}
+
+📦 Product Details:
+Name: ${product.name}
+Price: ₹${product.newPrice}
+
+👤 Customer Details:
+Name: ${savedAddress.fullName}
+Phone: ${savedAddress.phone}
+Address: ${savedAddress.address}
+${savedAddress.district}, ${savedAddress.state} - ${savedAddress.pincode}
+
+📝 Message:
+Please confirm this order.
+
+Thank you!
+`;
+
+    const encodedMessage = encodeURIComponent(message);
+
+    const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+    // Save first
+    saveOrder({
+        orderId,
         productId: product.id,
         productName: product.name,
         price: product.newPrice,
-        address: JSON.parse(localStorage.getItem(STORAGE_KEY)),
-        orderDate: new Date().toLocaleString(),
-        status: "Confirmed"
-    };
+        address: savedAddress,
+        status: "Pending on WhatsApp",
+        orderDate: new Date().toLocaleString()
+    });
 
-    saveOrder(order);
-
-    alert(`🎉 Order Placed Successfully!\nOrder ID: ${order.orderId}`);
-
-    window.location.href = "index.html";
-}
-
-function generateOrderId() {
-    return "RC" + Math.floor(100000 + Math.random() * 900000);
+    // Then redirect
+        window.location.href = whatsappURL;
+    
 }
 
 function saveOrder(order) {
