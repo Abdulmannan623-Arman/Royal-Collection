@@ -149,4 +149,8 @@
     .new-price {
         font-size: 22px;
     }
+
+    .btn-box {
+        padding: 20px 0;
+    }
 }
