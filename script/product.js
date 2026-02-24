@@ -31,31 +31,65 @@ function renderProduct(product) {
                 </p>
                 
                 <div class="btn-box">
-                <button id="addToCart">Add to Cart</button>
-                <button id="buy">Buy Now</button>
+                    <button id="addToCart">Add to Cart</button>
+                    <button id="buy">Buy Now</button>
                 </div>
             </div>
         </div>
     `;
 
     const buyBtn = document.getElementById("buy");
+    const addToCartBtn = document.getElementById("addToCart");
 
+    // ✅ Buy Now
     buyBtn.addEventListener("click", () => {
         window.location.href = `checkout.html?id=${product.id}`;
     });
-    
+
+    // ✅ Add To Cart
+    addToCartBtn.addEventListener("click", () => {
+
+        let cart = getCart();
+
+        const existingItem = cart.find(item => item.id === product.id);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                id: product.id,
+                name: product.name,
+                image: product.image,
+                price: product.newPrice,
+                quantity: 1
+            });
+        }
+
+        saveCart(cart);
+
+        // UX Feedback
+        addToCartBtn.textContent = "Added ✓";
+        addToCartBtn.disabled = true;
+
+        setTimeout(() => {
+            addToCartBtn.textContent = "Add to Cart";
+            addToCartBtn.disabled = false;
+        }, 1500);
+    });
 }
 
-if (productId) {
 
+// ===== INIT =====
+
+if (!productId) {
+    container.innerHTML = "<h2>Invalid Product</h2>";
+} else {
     const product = getProductById(productId);
 
-    if (product) {
-        renderProduct(product);
-    } else {
+    if (!product) {
         container.innerHTML = "<h2>Product Not Found</h2>";
+    } else {
+        renderProduct(product);
     }
-
-} else {
-    container.innerHTML = "<h2>Invalid Product</h2>";
 }
+
