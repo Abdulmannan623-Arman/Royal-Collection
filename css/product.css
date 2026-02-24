@@ -113,8 +113,16 @@
     background: linear-gradient(135deg, #ff6a00, #f69800);
 }
 
+#addToCart:hover {
+    background: linear-gradient(135deg, #f69800, #ff6a00);
+}
+
 #buy {
     background: linear-gradient(135deg, #029725, #00e72e);
+}
+
+#buy:hover {
+    background: linear-gradient(135deg, #00e72e, #029725);
 }
 
 .btn-box button:hover {
