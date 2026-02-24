@@ -122,6 +122,7 @@ body.no-scroll {
 }
 
 .cart-count {
+  display: none;
   position: absolute;
   top: -6px;
   right: -8px;

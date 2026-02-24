@@ -236,8 +236,6 @@ function checkLoginState() {
     }
 }
 
-window.addEventListener("DOMContentLoaded", checkLoginState);
-
 
 // Sign Up Overlay 
 
@@ -334,3 +332,23 @@ document.addEventListener("keydown", (e) => {
         unlockScroll()
     }
 });
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartCountEl = document.getElementById("cartCount");
+
+    if (!cartCountEl) return;
+
+    const totalItems = cart.reduce((total, item) => {
+        return total + (item.quantity || item.qty || 0);
+    }, 0);
+
+    cartCountEl.textContent = totalItems;
+    cartCountEl.style.display = totalItems ? "block" : "none";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    checkLoginState();
+    updateCartCount();
+});
+

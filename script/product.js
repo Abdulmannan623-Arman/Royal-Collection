@@ -66,6 +66,7 @@ function renderProduct(product) {
         }
 
         saveCart(cart);
+        updateCartCount();
 
         // UX Feedback
         addToCartBtn.textContent = "Added ✓";
