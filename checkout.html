@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Royal Collection</title>
+
+    <link rel="stylesheet" href="css/checkout.css">
+
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <main class="checkout-page">
+
+        <div class="checkout-container">
+
+            <!-- LEFT SIDE -->
+            <div class="checkout-left">
+
+                <!-- Product Summary -->
+                <section class="product-summary" id="productSummary">
+                    <!-- JS will render product details here -->
+                </section>
+
+                <!-- Delivery Address -->
+                <section class="address-section">
+
+                    <div class="section-header">
+                        <h2>Delivery Address</h2>
+                        <button id="editAddressBtn" class="edit-btn" style="display:none;">
+                            Edit
+                        </button>
+                    </div>
+
+                    <!-- Saved Address Preview -->
+                    <div id="savedAddressBox" class="saved-address" style="display:none;">
+                        <!-- LocalStorage address will show here -->
+                    </div>
+
+                    <!-- Address Form -->
+                    <form id="addressForm" class="address-form">
+
+                        <div class="form-row">
+                            <input type="text" id="fullName" placeholder="Full Name" required>
+                            <input type="text" id="phone" placeholder="Phone Number" required>
+                        </div>
+
+                        <div class="form-row">
+                            <input type="text" id="pincode" placeholder="Pincode" required>
+                            <input type="text" id="state" placeholder="State" required>
+                        </div>
+
+                        <input type="text" id="district" placeholder="District" required>
+
+                        <textarea id="address" placeholder="Full Address" rows="3" required></textarea>
+
+                        <button type="submit" class="save-btn">
+                            Save Address
+                        </button>
+
+                    </form>
+
+                </section>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+            <div class="checkout-right">
+
+                <section class="price-details">
+
+                    <h3>Price Details</h3>
+
+                    <div class="price-row">
+                        <span>Product Price</span>
+                        <span id="priceValue">₹0</span>
+                    </div>
+
+                    <div class="price-row">
+                        <span>Delivery Charge</span>
+                        <span id="deliveryCharge">Free</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="price-row total">
+                        <span>Total Amount</span>
+                        <span id="totalAmount">₹0</span>
+                    </div>
+
+                    <button id="placeOrderBtn" class="place-order-btn">
+                        Place Order
+                    </button>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="script/data.js"></script>
+    <script src="script/utils.js"></script>
+    <script src="script/checkout.js"></script>
+
+</body>
+</html>

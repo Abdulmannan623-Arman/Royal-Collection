@@ -37,6 +37,13 @@ function renderProduct(product) {
             </div>
         </div>
     `;
+
+    const buyBtn = document.getElementById("buy");
+
+    buyBtn.addEventListener("click", () => {
+        window.location.href = `checkout.html?id=${product.id}`;
+    });
+    
 }
 
 if (productId) {
