@@ -4,16 +4,17 @@
     display: flex;
     gap: 60px;
     align-items: flex-start;
-    padding: 60px 8%;
+    padding: 60px 4%;
     max-width: 1200px;
     margin: auto;
+    background: #f6f6f6;
 }
 
 /* ===== IMAGE SECTION ===== */
 
 .product-image {
     flex: 1;
-    background: #f9f9f9;
+    background: #ffffff;
     border-radius: 16px;
     padding: 30px;
     display: flex;
@@ -60,10 +61,26 @@
 /* ===== PRICE SECTION ===== */
 
 .price-box {
+    padding: 6px 10px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    gap: 25px;
+}
+
+.discount {
+    width: fit-content;
+    background: #e53935;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 20px;
 }
 
 .new-price {
@@ -72,38 +89,35 @@
     color: #27ae60;
 }
 
-.old-price {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 16px;
-}
-
-.discount {
-    background: #e53935;
-    color: #fff;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-}
-
 /* ===== BUTTON ===== */
+.btn-box {
+    padding: 26px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
 
-#addToCart {
+.btn-box button {
+    width: 100%;
     padding: 14px 28px;
     border: none;
-    background: #111;
     color: #fff;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: fit-content;
 }
 
-#addToCart:hover {
-    background: #333;
+#addToCart {
+    background: linear-gradient(135deg, #ff6a00, #f69800);
+}
+
+#buy {
+    background: linear-gradient(135deg, #029725, #00e72e);
+}
+
+.btn-box button:hover {
     transform: translateY(-2px);
 }
 
@@ -113,11 +127,19 @@
     .product-page {
         flex-direction: column;
         gap: 40px;
-        padding: 40px 6%;
+        padding: 0;
+    }
+
+    .product-image {
+        border-radius: 0;
     }
 
     .product-image img {
         max-width: 100%;
+    }
+
+    .product-info {
+        padding: 8px 22px;
     }
 
     .product-title {
