@@ -1,3 +1,19 @@
+function debounce(fn, delay) {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), delay);
+    };
+}
+
+
+function lockScroll() {
+    document.body.classList.add("no-scroll");
+}
+
+function unlockScroll() {
+    document.body.classList.remove("no-scroll");
+}
 
 // Profile Button 
 
@@ -7,13 +23,22 @@ const closeLogin = document.getElementById("closeLogin");
 
 if (profileBtn && loginOverlay && closeLogin) {
     profileBtn.addEventListener("click", () => {
-        loginOverlay.classList.add("active");
-        document.body.classList.add("no-scroll");
+        const user = JSON.parse(localStorage.getItem("royalCollectionUser"));
+
+        if (user) {
+            if (confirm("Logout?")) {
+                localStorage.removeItem("royalCollectionUser");
+                location.reload();
+            }
+        } else {
+            loginOverlay?.classList.add("active");
+            lockScroll()
+        }
     });
 
     closeLogin.addEventListener("click", () => {
         loginOverlay.classList.remove("active");
-        document.body.classList.remove("no-scroll");
+        unlockScroll()
     });
 
 }
@@ -29,36 +54,34 @@ const desktopInput = document.getElementById("desktopSearchInput");
 const desktopSuggestions = document.getElementById("desktopSuggestions");
 
 if (desktopInput) {
-    desktopInput.addEventListener("input", async () => {
-        const value = desktopInput.value.trim().toLowerCase();
-        desktopSuggestions.innerHTML = "";
+    desktopInput?.addEventListener("input",
+        debounce(async () => {
+            const value = desktopInput.value.trim().toLowerCase();
+            desktopSuggestions.innerHTML = "";
 
-        if (!value) {
-            desktopSuggestions.classList.remove("active");
-            return;
-        }
+            if (!value) {
+                desktopSuggestions.classList.remove("active");
+                return;
+            }
 
-        const results = await fetchProducts(value);
+            const results = await fetchProducts(value);
 
-        if (results.length === 0) {
-            desktopSuggestions.innerHTML = "<p>No result found</p>";
-            desktopSuggestions.classList.add("active");
-            return;
-        }
+            if (!results.length) {
+                desktopSuggestions.innerHTML = "<p>No result found</p>";
+                desktopSuggestions.classList.add("active");
+                return;
+            }
 
-        results.forEach(item => {
-            const p = document.createElement("p");
-            p.textContent = item.name;
-
-            p.addEventListener("click", () => {
-                window.location.href = `product.html?id=${item.id}`;
+            results.forEach(item => {
+                const p = document.createElement("p");
+                p.textContent = item.name;
+                p.onclick = () => location.href = `product.html?id=${item.id}`;
+                desktopSuggestions.appendChild(p);
             });
 
-            desktopSuggestions.appendChild(p);
-        });
-
-        desktopSuggestions.classList.add("active");
-    });
+            desktopSuggestions.classList.add("active");
+        }, 300)
+    );
 
     /* Click outside → close */
     document.addEventListener("click", (e) => {
@@ -84,7 +107,7 @@ if (openSearchBtn) {
         if (window.innerWidth <= 768 && searchOverlay) {
             searchOverlay.classList.add("active");
             searchInput.focus();
-            document.body.classList.add("no-scroll");
+            lockScroll()
         }
     });
 }
@@ -95,37 +118,34 @@ if (closeSearchBtn) {
         searchOverlay.classList.remove("active");
         searchInput.value = "";
         suggestionsBox.innerHTML = "";
-        document.body.classList.remove("no-scroll");
+        unlockScroll()
     });
 }
 
 /* Mobile live search */
 if (searchInput) {
-    searchInput.addEventListener("input", async () => {
-        const value = searchInput.value.trim().toLowerCase();
+    searchInput?.addEventListener("input",
+        debounce(async () => {
+            const value = searchInput.value.trim().toLowerCase();
+            suggestionsBox.innerHTML = "";
 
-        suggestionsBox.innerHTML = "";
+            if (!value) return;
 
-        if (!value) return;
+            const results = await fetchProducts(value);
 
-        const results = await fetchProducts(value);
+            if (!results.length) {
+                suggestionsBox.innerHTML = "<p>No result found</p>";
+                return;
+            }
 
-        if (results.length === 0) {
-            suggestionsBox.innerHTML = "<p>No result found</p>";
-            return;
-        }
-
-        results.forEach(item => {
-            const p = document.createElement("p");
-            p.textContent = item.name;
-
-            p.addEventListener("click", () => {
-                window.location.href = `product.html?id=${item.id}`;
+            results.forEach(item => {
+                const p = document.createElement("p");
+                p.textContent = item.name;
+                p.onclick = () => location.href = `product.html?id=${item.id}`;
+                suggestionsBox.appendChild(p);
             });
-
-            suggestionsBox.appendChild(p);
-        });
-    });
+        }, 300)
+    );
 
 }
 
@@ -135,9 +155,13 @@ KEYBOARD NAVIGATION (SHARED)
 function enableKeyboardNavigation(inputEl, suggestionsEl) {
     let activeIndex = -1;
 
+    // Reset index when typing
+    inputEl.addEventListener("input", () => {
+        activeIndex = -1;
+    });
+
     inputEl.addEventListener("keydown", (e) => {
         const items = suggestionsEl.querySelectorAll("p");
-
         if (!items.length) return;
 
         if (e.key === "ArrowDown") {
@@ -162,9 +186,7 @@ function enableKeyboardNavigation(inputEl, suggestionsEl) {
 
         if (activeIndex > -1) {
             items[activeIndex].classList.add("active");
-            items[activeIndex].scrollIntoView({
-                block: "nearest"
-            });
+            items[activeIndex].scrollIntoView({ block: "nearest" });
         }
     });
 }
@@ -179,48 +201,42 @@ if (searchInput && suggestionsBox) {
 
 
 
-// Menu Overlay 
-
+// ===== MENU OVERLAY SYSTEM =====
+const menuBackdrop = document.getElementById("menuBackdrop");
 const menuOverlay = document.getElementById("menuOverlay");
 const menuBtn = document.querySelector(".mobile-menu");
 
+/* Open Menu */
+if (menuBtn && menuOverlay && menuBackdrop) {
+    menuBtn.addEventListener("click", () => {
+        menuOverlay.classList.add("active");
+        menuBackdrop.classList.add("active");
+        lockScroll();
+    });
+}
+
+/* Close when backdrop clicked */
+menuBackdrop?.addEventListener("click", closeMenu);
+
+
+/* ===== REAL LOGIN STATE ===== */
 const menuAuth = document.getElementById("menuAuth");
 const menuUsername = document.getElementById("menuUsername");
 const avatarImg = document.querySelector(".menu-avatar img");
 const avatarIcon = document.querySelector(".menu-avatar i");
 
-/* Open menu */
-if (menuBtn && menuOverlay) {
-    menuBtn.addEventListener("click", () => {
-        menuOverlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-    });
-}
+function checkLoginState() {
+    const user = JSON.parse(localStorage.getItem("royalCollectionUser"));
 
-/* Close on outside click */
-document.addEventListener("click", (e) => {
-    if (!menuOverlay || !menuBtn) return;
-
-    if (
-        menuOverlay.classList.contains("active") &&
-        !menuOverlay.contains(e.target) &&
-        !menuBtn.contains(e.target)
-    ) {
-        menuOverlay.classList.remove("active");
-        document.body.style.overflow = "";
+    if (user && menuAuth && menuUsername && avatarImg && avatarIcon) {
+        menuAuth.style.display = "none";
+        menuUsername.textContent = user.name;
+        avatarImg.style.display = "block";
+        avatarIcon.style.display = "none";
     }
-});
-
-/* ===== LOGIN STATE (temporary) ===== */
-const isLoggedIn = localStorage.getItem("user") !== null;
-const username = "Mannan";
-
-if (isLoggedIn && menuAuth && menuUsername && avatarImg && avatarIcon) {
-    menuAuth.style.display = "none";
-    menuUsername.textContent = username;
-    avatarImg.style.display = "block";
-    avatarIcon.style.display = "none";
 }
+
+window.addEventListener("DOMContentLoaded", checkLoginState);
 
 
 // Sign Up Overlay 
@@ -241,18 +257,18 @@ const menuSignupBtn = document.getElementById("menuSignupBtn");
 function openLogin() {
     loginOverlayEl.classList.add("active");
     signupOverlay.classList.remove("active");
-    document.body.classList.add("no-scroll");
+    lockScroll()
 }
 
 function openSignup() {
     signupOverlay.classList.add("active");
     loginOverlayEl.classList.remove("active");
-    document.body.classList.add("no-scroll");
+    lockScroll()
 }
 
 function closeSignupOverlay() {
     signupOverlay.classList.remove("active");
-    document.body.classList.remove("no-scroll");
+    unlockScroll()
 }
 
 /* ===== LOGIN → SIGNUP ===== */
@@ -279,11 +295,10 @@ if (closeSignup) {
 }
 
 /* ===== MOBILE MENU ===== */
-if (menuLoginBtn) {
-    menuLoginBtn.addEventListener("click", () => {
-        menuOverlay.classList.remove("active");
-        openLogin();
-    });
+function closeMenu() {
+    menuOverlay?.classList.remove("active");
+    menuBackdrop?.classList.remove("active");
+    unlockScroll();
 }
 
 if (menuSignupBtn) {
@@ -292,14 +307,30 @@ if (menuSignupBtn) {
         openSignup();
     });
 }
-
-/* ===== ESC KEY ===== */
+/* ===== GLOBAL ESC KEY HANDLER ===== */
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        if (loginOverlay) loginOverlay.classList.remove("active");
-        if (signupOverlay) signupOverlay.classList.remove("active");
-        if (menuOverlay) menuOverlay.classList.remove("active");
-        document.body.classList.remove("no-scroll");
+    if (e.key !== "Escape") return;
+
+    // Close menu
+    if (menuOverlay?.classList.contains("active")) {
+        closeMenu();
+    }
+
+    // Close login
+    if (loginOverlay?.classList.contains("active")) {
+        loginOverlay.classList.remove("active");
+        unlockScroll()
+    }
+
+    // Close signup
+    if (signupOverlay?.classList.contains("active")) {
+        signupOverlay.classList.remove("active");
+        unlockScroll()
+    }
+
+    // Close mobile search
+    if (searchOverlay?.classList.contains("active")) {
+        searchOverlay.classList.remove("active");
+        unlockScroll()
     }
 });
-

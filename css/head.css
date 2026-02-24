@@ -350,7 +350,7 @@ body.no-scroll {
   background: #fff;
   width: 420px;
   border-radius: 12px;
-  padding: 24px 28px 28px;
+  padding: 12px 28px 28px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
   animation: slideUp 0.35s ease;
 }
@@ -379,7 +379,7 @@ body.no-scroll {
 }
 
 .login-close {
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
   color: #444;
 }
@@ -473,6 +473,26 @@ body.no-scroll {
 /* End Login Overlay */
 
 /* ===== MOBILE MENU OVERLAY ===== */
+
+/* ===== MENU BACKDROP ===== */
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 400;
+}
+
+/* Active */
+.menu-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 .menu-overlay {
   position: fixed;
   top: 0;
