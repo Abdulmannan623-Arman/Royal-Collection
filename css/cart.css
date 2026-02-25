@@ -126,8 +126,11 @@ body {
 
 /* ===== EMPTY CART ===== */
 .empty-cart {
-    text-align: center;
-    padding: 60px 20px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: #ffffff;
     border-radius: 10px;
 }
@@ -158,7 +161,8 @@ body {
 }
 
 .shop-btn:hover {
-    background: #333;
+    transform: translateY(-4px);
+
 }
 
 /* ===== RESPONSIVE ===== */
