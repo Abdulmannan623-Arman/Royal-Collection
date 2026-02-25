@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Your Cart</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+
+    <link rel="stylesheet" href="css/head.css">
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+
+<body>
+
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <!-- MOBILE MENU ICON (hidden on desktop) -->
+            <div class="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <!-- LEFT -->
+            <div class="nav-left">
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.jpg" alt="logo"></a>
+                </div>
+            </div>
+
+            <!-- CENTER (Desktop Search – future ready) -->
+            <div class="nav-center">
+                <div class="desktop-search">
+                    <input type="text" id="desktopSearchInput" placeholder="Search products..." />
+                    <button>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+
+                    <!-- Suggestions -->
+                    <div class="desktop-suggestions" id="desktopSuggestions"></div>
+                </div>
+            </div>
+
+
+            <!-- RIGHT -->
+            <div class="nav-right">
+                <div class="profile" id="profileBtn" aria-label="User Profile">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="cart" id="cart" aria-label="Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                
+            </div>
+
+
+        </div>
+    </header>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-header">
+            <button class="back-btn" id="closeSearch">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" />
+        </div>
+
+        <div class="search-suggestions" id="suggestions"></div>
+    </div>
+
+    <!-- End Search Overlay -->
+
+    <!-- Login Overlay -->
+
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+
+            <!-- Header -->
+            <div class="login-header">
+                <div class="login-logo">
+                    <img src="images/logo.jpg" alt="logo">
+                </div>
+
+                <span class="login-close" id="closeLogin">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+            </div>
+
+            <!-- Welcome -->
+            <p class="welcome-text">
+                <span class="welcome-highlight">Welcome Back!</span> Please login to your account.
+            </p>
+
+            <!-- Form -->
+            <form class="login-form">
+                <input type="text" placeholder="Email or Phone" required>
+                <input type="password" placeholder="Password" required>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+
+            <!-- Signup -->
+            <p class="signup-text">
+                Don't have an account ?
+                <a href="#" id="openSignupFromLogin"> Register Now</a>
+            </p>
+
+        </div>
+    </div>
+
+
+    <!-- End Login Overlay -->
+
+    <!-- MOBILE MENU OVERLAY -->
+
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    <div class="menu-overlay" id="menuOverlay">
+
+        <!-- USER / LOGIN SECTION -->
+        <div class="menu-user">
+
+            <div class="menu-top">
+
+                <!-- Avatar -->
+                <div class="menu-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+
+            <!-- Welcome -->
+            <p class="menu-welcome">
+                Welcome <span id="menuUsername">Guest</span>!
+            </p>
+
+            <!-- Auth buttons -->
+            <div class="menu-auth" id="menuAuth">
+                <button class="menu-login" id="menuLoginBtn">Login</button>
+                <button class="menu-signup" id="menuSignupBtn">Sign Up</button>
+            </div>
+
+        </div>
+
+        <!-- MENU LIST -->
+        <ul class="menu-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">My Orders</a></li>
+            <li><a href="#">Help & Support</a></li>
+        </ul>
+
+    </div>
+
+    <!-- END MOBILE MENU OVERLAY -->
+
+    <!-- SIGN UP OVERLAY -->
+    <div class="signup-overlay" id="signupOverlay">
+
+        <!-- HEADER -->
+        <div class="signup-header">
+            <button class="back-btn" id="closeSignup">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <span class="header-text">Create an account</span>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="signup-container">
+
+            <!-- Gradient Title -->
+            <h2 class="signup-title">Sign Up</h2>
+
+            <form class="signup-form">
+
+                <!-- ================= PERSONAL DETAILS ================= -->
+                <fieldset>
+                    <legend>Personal Details</legend>
+
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <input type="text" id="firstName" name="first_name" required placeholder=" ">
+                            <label for="firstName">First Name</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="text" id="lastName" name="last_name" required placeholder=" ">
+                            <label for="lastName">Last Name</label>
+                        </div>
+
+                        <div class="field">
+                            <select id="gender" name="gender" required>
+                                <option value="" hidden></option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <label for="gender">Gender</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="date" id="dob" name="dob" required placeholder=" ">
+                            <label for="dob">Date of Birth</label>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+
+                <!-- ================= ADDRESS DETAILS ================= -->
+                <fieldset>
+                    <legend>Address Details</legend>
+
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <input type="text" id="house" name="house" placeholder=" ">
+                            <label for="house">House No</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="text" id="road" name="road" placeholder=" ">
+                            <label for="road">Road Name</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="text" id="village" name="village" required placeholder=" ">
+                            <label for="village">Village</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="text" id="post" name="post" required placeholder=" ">
+                            <label for="post">Post Office</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="text" id="police" name="police" required placeholder=" ">
+                            <label for="police">Police Station</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="text" id="district" name="district" required placeholder=" ">
+                            <label for="district">District</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="text" id="state" name="state" required placeholder=" ">
+                            <label for="state">State</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="number" id="pincode" name="pincode" required placeholder=" ">
+                            <label for="pincode">Pincode</label>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+
+                <!-- ================= CONTACT DETAILS ================= -->
+                <fieldset>
+                    <legend>Contact Details</legend>
+
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <input type="tel" id="phone" name="phone" required placeholder=" ">
+                            <label for="phone">Mobile Number</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="tel" id="secondary" name="secondary" placeholder=" ">
+                            <label for="secondary">Secondary Number</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="email" id="email" name="email" required placeholder=" ">
+                            <label for="email">Email</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="password" id="password" name="password" required placeholder=" ">
+                            <label for="password">New Password</label>
+                        </div>
+
+                        <div class="field">
+                            <input type="password" id="confirmPassword" name="confirm_password" required
+                                placeholder=" ">
+                            <label for="confirmPassword">Confirm Password</label>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+
+                <fieldset>
+                    <legend>Upload Profile Image</legend>
+
+                    <div class="profile-upload">
+                        <input type="file" id="profileInput" accept="image/*" hidden>
+
+                        <div class="upload-box" id="uploadBox">
+                            <span>Click to upload</span>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+
+
+                <!-- ================= SUBMIT ================= -->
+                <button type="submit" class="signup-btn">
+                    Create Account
+                </button>
+
+                <p class="login-text">
+                    Already have an account ?
+                    <a href="#" id="openLoginFromSignup">Login Now</a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- End Sign Up Overlay -->
+
+    <div class="cart-container">
+        <!-- <h2>Your Shopping Cart</h2> -->
+
+        <div id="cartItems"></div>
+
+        <div class="cart-summary">
+            <h3>Total: ₹<span id="cartTotal">0</span></h3>
+            <button id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script src="script/utils.js"></script>
+    <script src="script/head.js"></script>
+    <script src="script/cart.js"></script>
+</body>
+
+</html>

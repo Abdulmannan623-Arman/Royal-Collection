@@ -340,7 +340,7 @@ function updateCartCount() {
     if (!cartCountEl) return;
 
     const totalItems = cart.reduce((total, item) => {
-        return total + (item.quantity || item.qty || 0);
+        return total + item.quantity;
     }, 0);
 
     cartCountEl.textContent = totalItems;
@@ -350,5 +350,13 @@ function updateCartCount() {
 document.addEventListener("DOMContentLoaded", () => {
     checkLoginState();
     updateCartCount();
+});
+
+// Open Cart Page 
+
+const cartIcon = document.getElementById("cart");
+
+cartIcon.addEventListener("click", () => {
+    window.location.href = "cart.html";
 });
 
