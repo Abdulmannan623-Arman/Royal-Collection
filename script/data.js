@@ -28,7 +28,7 @@ const PRODUCTS = [
     },
     {
         id: 4,
-        name: "Al-Nuaim Delicia a Premium Range Attar (Floral, Rose, Saffron, Spicy)",
+        name: "Al-Nuaim Delicia a Premium Range Attar",
         image: "images/delicia.PNG",
         oldPrice: 250,
         newPrice: 180,
