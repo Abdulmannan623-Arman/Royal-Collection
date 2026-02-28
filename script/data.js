@@ -34,22 +34,5 @@ const PRODUCTS = [
         newPrice: 180,
         description: "Attarr Roll On 9.9ml Floral Attarr (Spicy, Woody) | Long Lasting Fragrance | Alcoholl-Free | For Men & Women",
         category: "attar"
-    },
-    {
-        id: 5,
-        name: "Arabian Jubba (white)",
-        image: "images/Punjabi.webp",
-        oldPrice: 1200,
-        newPrice: 999,
-        description: "The best Arabian Jubba",
-        category: "jubba"
-    },
-    {
-        id: 6,
-        name: "Full Burkha (Black)",
-        image: "images/Burkha.jpg",
-        oldPrice: 1800,
-        newPrice: 1299,
-        category: "burkha"
     }
 ];
