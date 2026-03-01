@@ -160,7 +160,7 @@
 /* Product Section */
 .product-section {
   padding: 15px;
-  background: #f5f5f5;
+  background: var(--body-bg);
 }
 
 .section-title {

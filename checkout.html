@@ -7,13 +7,18 @@
 
     <title>Checkout | Royal Collection</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/head.css">
     <link rel="stylesheet" href="css/checkout.css">
 
 </head>
 
 <body>
 
-    <div id="header"></div>
+<header class="navbar" id="navbar"></header>
+
+    <section id="overlays"></section>
 
     <main class="checkout-page">
 
@@ -57,7 +62,7 @@
 
                         <input type="text" id="district" placeholder="District" required>
 
-                        <textarea id="address" placeholder="Full Address" rows="3" required></textarea>
+                        <textarea id="address" placeholder="Village, Post Office & Police Station" rows="3" required></textarea>
 
                         <button type="submit" class="save-btn">
                             Save Address
@@ -108,6 +113,8 @@
 
     <script src="script/data.js"></script>
     <script src="script/utils.js"></script>
+    <script src="script/head.js"></script>
+    <script src="script/overlays.js"></script>
     <script src="script/cart.js"></script>
     <script src="script/checkout.js"></script>
 
