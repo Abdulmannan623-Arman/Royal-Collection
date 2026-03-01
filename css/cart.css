@@ -208,6 +208,10 @@
         padding: 10px 15px;
     }
 
+    .empty-cart {
+        height: 90vh;
+    }
+
     .empty-icon {
         font-size: 50px;
     }
