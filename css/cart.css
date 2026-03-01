@@ -117,11 +117,17 @@ body {
 
 #checkoutBtn {
     padding: 10px 20px;
-    background: #000;
-    color: #fff;
+    background: var(--btn-bg);
+    color: var(--btn-color);
     border: none;
     cursor: pointer;
     border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+#checkoutBtn:hover {
+    transform: translateY(-3px);
+    background: var(--btn-hover);
 }
 
 /* ===== EMPTY CART ===== */
@@ -162,7 +168,6 @@ body {
 
 .shop-btn:hover {
     transform: translateY(-4px);
-
 }
 
 /* ===== RESPONSIVE ===== */

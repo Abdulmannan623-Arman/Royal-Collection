@@ -74,7 +74,7 @@ overlays.innerHTML = `
     </div>
 
     <ul class="menu-list">
-      <li><a href="#">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="#">Categories</a></li>
       <li><a href="#">Offers</a></li>
       <li><a href="#">My Orders</a></li>
