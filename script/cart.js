@@ -48,9 +48,11 @@ function renderCart() {
                 <button class="increase" data-id="${item.id}">+</button>
             </div>
 
+            <div class="removeDiv">
             <button class="remove-btn" data-id="${item.id}">
                 Remove
             </button>
+            </div>
         `;
 
         cartItemsContainer.appendChild(div);
