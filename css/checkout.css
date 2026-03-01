@@ -191,7 +191,7 @@ body {
 .price-row.total {
     margin-top: 15px;
     font-weight: 700;
-    font-size: 17px;
+    font-size: 18px;
     color: #000;
 }
 
@@ -205,7 +205,7 @@ body {
     margin-top: 25px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 18px;
     transition: 0.2s ease;
 }
 
@@ -255,4 +255,21 @@ body {
         padding: 14px;
         font-size: 14px;
     }
+}
+
+@media (max-width: 768px) {
+    
+    .product-summary h2 {
+        font-size: 18px;
+    }
+
+    .product-summary p {
+        font-size: 14px;
+    }
+
+    .price-row,
+    .price-row.total {
+        font-size: 16px;
+    }
+
 }
