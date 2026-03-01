@@ -1,7 +1,7 @@
 const PRODUCTS = [
     {
         id: 1,
-        name: "Ajmal Impress Attar 10ml Alcohol Free",
+        name: "Ajmal Impress Attar 10ml",
         image: "images/impress.PNG",
         oldPrice: 499,
         newPrice: 440,
@@ -10,7 +10,7 @@ const PRODUCTS = [
     },
     {
         id: 2,
-        name: "Ajmal Al-Wafi Attar Concentrated Perfume 10ml",
+        name: "Ajmal Al-Wafi Attar 10ml",
         image: "images/al wafi.PNG",
         oldPrice: 499,
         newPrice: 440,
@@ -19,7 +19,7 @@ const PRODUCTS = [
     },
     {
         id: 3,
-        name: "SRF RAEES 20ML ATTAR (Floral, Saffron, Oud)",
+        name: "SRF Raees Attar 20ml",
         image: "images/raees.PNG",
         oldPrice: 280,
         newPrice: 200,
@@ -28,7 +28,7 @@ const PRODUCTS = [
     },
     {
         id: 4,
-        name: "Al-Nuaim Delicia a Premium Range Attar",
+        name: "Al-Nuaim Delicia a Premium Attar",
         image: "images/delicia.PNG",
         oldPrice: 250,
         newPrice: 180,
