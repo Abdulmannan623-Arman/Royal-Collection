@@ -3,6 +3,12 @@ const cartSummary = document.querySelector(".cart-summary");
 const cartTotalEl = document.getElementById("cartTotal");
 const checkoutBtn = document.getElementById("checkoutBtn");
 
+
+checkoutBtn.addEventListener("click", () => {
+    window.location.href = "checkout.html";
+});
+
+
 function renderCart() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 

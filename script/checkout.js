@@ -3,38 +3,71 @@ const WHATSAPP_NUMBER = "919083052120";
 const summaryContainer = document.getElementById("productSummary");
 
 const params = new URLSearchParams(window.location.search);
-const productId = parseInt(params.get("id"));
+const buyNowId = params.get("id");
 
-if (!productId) {
-    summaryContainer.innerHTML = "<h2>Invalid Product</h2>";
-} else {
-    const product = getProductById(productId);
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    if (!product) {
-        summaryContainer.innerHTML = "<h2>Product Not Found</h2>";
-    } else {
-        renderSummary(product);
-        updatePrice(product);
+let checkoutItems = [];
+
+
+if (buyNowId) {
+
+    const product = getProductById(parseInt(buyNowId));
+
+    if (product) {
+        checkoutItems.push({
+            id: product.id,
+            quantity: 1
+        });
     }
+
+} else {
+
+    checkoutItems = cart;
 }
 
-function updatePrice(product) {
+if (checkoutItems.length === 0) {
+    summaryContainer.innerHTML = "<h2>Your cart is empty</h2>";
+} else {
+    renderCheckoutSummary();
+    updateCheckoutPrice();
+}
+
+function renderCheckoutSummary() {
+
+    summaryContainer.innerHTML = "<h2>Order Summary</h2>";
+
+    checkoutItems.forEach(item => {
+
+        const product = getProductById(item.id);
+        if (!product) return;
+
+        summaryContainer.innerHTML += `
+            <p><strong>${product.name}</strong></p>
+            <p>Price: ₹${product.newPrice} Qty: ${item.quantity}</p>
+            <hr>
+        `;
+    });
+}
+
+function updateCheckoutPrice() {
 
     const priceValue = document.getElementById("priceValue");
     const totalAmount = document.getElementById("totalAmount");
 
-    priceValue.innerText = `₹${product.newPrice}`;
-    totalAmount.innerText = `₹${product.newPrice}`;
+    let total = 0;
+
+    checkoutItems.forEach(item => {
+        const product = getProductById(item.id);
+        if (product) {
+            total += product.newPrice * item.quantity;
+        }
+    });
+
+    priceValue.innerText = `₹${total}`;
+    totalAmount.innerText = `₹${total}`;
 }
 
-function renderSummary(product) {
-    summaryContainer.innerHTML = `
-        <h2>Order Summary</h2>
-        <p><strong>${product.name}</strong></p>
-        <p>Price: ₹${product.newPrice}</p>
-        <p>Delivery in 03:00 p.m. - 05:00 p.m.</p>
-    `;
-}
 
 const addressForm = document.getElementById("addressForm");
 const savedAddressBox = document.getElementById("savedAddressBox");
@@ -120,16 +153,33 @@ function generateOrderId() {
 
 function createOrder() {
 
-    const product = getProductById(productId);
-
-    if (!product) {
-        alert("Product not found!");
+    if (checkoutItems.length === 0) {
+        alert("Cart is empty!");
         return;
     }
 
     const savedAddress = JSON.parse(localStorage.getItem(STORAGE_KEY));
-
     const orderId = generateOrderId();
+
+    let total = 0;
+    let productDetails = "";
+
+    checkoutItems.forEach(item => {
+
+        const product = getProductById(item.id);
+        if (!product) return;
+
+        const itemTotal = product.newPrice * item.quantity;
+        total += itemTotal;
+
+        productDetails += `
+Name: ${product.name}
+Price: ₹${product.newPrice}
+Quantity: ${item.quantity}
+Subtotal: ₹${itemTotal}
+
+`;
+    });
 
     const message = `
 🛍 *New Order - Royal Collection*
@@ -137,8 +187,9 @@ function createOrder() {
 🆔 Order ID: ${orderId}
 
 📦 Product Details:
-Name: ${product.name}
-Price: ₹${product.newPrice}
+${productDetails}
+
+💰 Total Amount: ₹${total}
 
 👤 Customer Details:
 Name: ${savedAddress.fullName}
@@ -146,30 +197,24 @@ Phone: ${savedAddress.phone}
 Address: ${savedAddress.address}
 ${savedAddress.district}, ${savedAddress.state} - ${savedAddress.pincode}
 
-📝 Message:
 Please confirm this order.
-
-Thank you!
 `;
 
     const encodedMessage = encodeURIComponent(message);
-
     const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
-    // Save first
     saveOrder({
         orderId,
-        productId: product.id,
-        productName: product.name,
-        price: product.newPrice,
+        items: checkoutItems,
+        total,
         address: savedAddress,
         status: "Pending on WhatsApp",
         orderDate: new Date().toLocaleString()
     });
 
-    // Then redirect
-        window.location.href = whatsappURL;
-    
+    localStorage.removeItem("cart"); // clear cart
+
+    window.location.href = whatsappURL;
 }
 
 function saveOrder(order) {
