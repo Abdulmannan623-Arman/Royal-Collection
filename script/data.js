@@ -34,5 +34,14 @@ const PRODUCTS = [
         newPrice: 180,
         description: "Attarr Roll On 9.9ml Floral Attarr (Spicy, Woody) | Long Lasting Fragrance | Alcoholl-Free | For Men & Women",
         category: "attar"
+    },
+    {
+        id: 5,
+        name: "Ethena 6ml Roll on Perfume",
+        image: "images/Ethena.png",
+        oldPrice: 175,
+        newPrice: 99,
+        description: "Ethena opens with the notes of apple, orange blossoms, fresh bergamot and sparkling lemon.",
+        category: "attar"
     }
 ];
