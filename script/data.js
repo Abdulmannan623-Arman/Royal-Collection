@@ -49,7 +49,7 @@ const PRODUCTS = [
         name: "Al-Nuaim Zatax Roll on 6ml",
         image: "images/zatax.jpeg",
         oldPrice: 399,
-        newPrice: 99,
+        newPrice: 100,
         description: "100% Original Great Fragrance Long Lasting Attar Roll On Luxury Scent For Men.",
         category: "attar"
     },
@@ -70,5 +70,24 @@ const PRODUCTS = [
         newPrice: 200,
         description: "Sweet Musk, Fresh Bergamot, Floral Jasmine, Spicy Saffron, Earthy Oud, Warm Amber, Soft Vanilla",
         category: "attar"
+    },
+    {
+        id: 9,
+        name: "AROCHEM Omaar Attar 9ml",
+        image: "images/umar.JPG",
+        oldPrice: 300,
+        newPrice: 160,
+        description: "TAJ Omaar Attar, Long Lasting Fragrance, No Alcohol, Pure Perfume (Pack of 1) Herbal Attar (Natural)",
+        category: "attar"
+    },
+    {
+        id: 10,
+        name: "Al-Nuaim Nazneen Attar - 6 ml",
+        image: "images/nazneen.jpg",
+        oldPrice: 399,
+        newPrice: 100,
+        description: "Silver Series Nazneen, Alcohol Free 6ml Floral Attar Long Lasting, Pure Perfume",
+        category: "attar"
     }
 ];
+
