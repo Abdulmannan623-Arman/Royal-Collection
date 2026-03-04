@@ -3,10 +3,9 @@ const cartSummary = document.querySelector(".cart-summary");
 const cartTotalEl = document.getElementById("cartTotal");
 const checkoutBtn = document.getElementById("checkoutBtn");
 
-
-checkoutBtn.addEventListener("click", () => {
-    window.location.href = "checkout.html";
-});
+    checkoutBtn.addEventListener("click", () => {
+        window.location.href = "checkout.html";
+    });
 
 
 function renderCart() {
@@ -56,10 +55,11 @@ function renderCart() {
                 <button class="increase" data-id="${item.id}">+</button>
             </div>
 
-            
+            <div class="removeDiv">
             <button class="remove-btn" data-id="${item.id}">
                 Remove
             </button>
+            </div>
            
         `;
 

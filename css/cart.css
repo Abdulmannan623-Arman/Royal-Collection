@@ -104,6 +104,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .cart-summary h3 {
@@ -117,6 +118,7 @@
     border: none;
     cursor: pointer;
     border-radius: 6px;
+    font-size: 16px;
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -205,13 +207,19 @@
 
     .quantity-box {
         display: inline-block;
-        width: 80%;
+        width: 50%;
     }
 
     .quantity-box button {
         width: 22px;
         height: 22px;
         margin: 0 10px;
+    }
+
+    .removeDiv {
+        display: inline-block;
+        width: 40%;
+        text-align: right;
     }
 
     .cart-summary {
@@ -221,11 +229,12 @@
     }
 
     .cart-summary h3 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     #checkoutBtn {
         padding: 10px 15px;
+        font-size: 14px;
     }
 
     .empty-cart {
