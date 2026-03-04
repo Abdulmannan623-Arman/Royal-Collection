@@ -208,8 +208,8 @@
 /* Discount */
 .discount-badge {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 4px;
+  left: 0;
   background: linear-gradient(135deg, #ff512f, #dd2476);
   color: #fff;
   font-size: 12px;
