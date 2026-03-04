@@ -266,6 +266,10 @@
     box-shadow: none;
   }
 
+  .product-img {
+    height: 180px;
+  }
+
   .product-name {
     font-size: 12px;
   }
