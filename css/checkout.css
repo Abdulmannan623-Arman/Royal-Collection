@@ -170,8 +170,10 @@ body {
 
 .checkout-right {
     flex: 1;
-    position: sticky;
-    top: 40px;
+    position: fixed;
+    width: 30%;
+    top: 125px;
+    right: 40px;
 }
 
 .price-details h3 {
@@ -227,6 +229,7 @@ body {
 
     .checkout-right {
         position: static;
+        width: 100%;
     }
 
     .form-row {

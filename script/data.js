@@ -38,10 +38,37 @@ const PRODUCTS = [
     {
         id: 5,
         name: "Ethena 6ml Roll on Perfume",
-        image: "images/Ethena.png",
+        image: "images/ethena.jpeg",
         oldPrice: 175,
         newPrice: 99,
         description: "Ethena opens with the notes of apple, orange blossoms, fresh bergamot and sparkling lemon.",
+        category: "attar"
+    },
+    {
+        id: 6,
+        name: "Al-Nuaim Zatax Roll on 6ml",
+        image: "images/zatax.jpeg",
+        oldPrice: 399,
+        newPrice: 99,
+        description: "100% Original Great Fragrance Long Lasting Attar Roll On Luxury Scent For Men.",
+        category: "attar"
+    },
+    {
+        id: 7,
+        name: "Al-nuaim Black Orchid 9.9ml Attar ",
+        image: "images/orchid.JPG",
+        oldPrice: 285,
+        newPrice: 220,
+        description: "Ameer Series Black Orchid 9.9Ml Floral (Spicy) | Long Lasting Fragrance | Alcoholl-Free | For Men & Women.",
+        category: "attar"
+    },
+    {
+        id: 8,
+        name: "Mushk Rizali Alcohol Free Attar - 6 ml",
+        image: "images/rizali.jpeg",
+        oldPrice: 260,
+        newPrice: 200,
+        description: "Sweet Musk, Fresh Bergamot, Floral Jasmine, Spicy Saffron, Earthy Oud, Warm Amber, Soft Vanilla",
         category: "attar"
     }
 ];
