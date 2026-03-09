@@ -88,6 +88,42 @@ const PRODUCTS = [
         newPrice: 100,
         description: "Silver Series Nazneen, Alcohol Free 6ml Floral Attar Long Lasting, Pure Perfume",
         category: "attar"
+    },
+    {
+        id: 11,
+        name: "Turkey Muslim Prayer Cap in Cotton",
+        image: "images/shahid.jpg",
+        oldPrice: 299,
+        newPrice: 100,
+        description: "Shahid Cap House Turkey Muslim namaz Prayer topi (Cap) in Cotton for Men's in Black Color",
+        category: "topi"
+    },
+    {
+        id: 12,
+        name: "ICH Islamic Prayer Cap Height-8cm",
+        image: "images/ich.jpg",
+        oldPrice: 329,
+        newPrice: 220,
+        description: "ICH Islamic Cap Namazi Topi Muslim Prayer Cap Height-8cm (Model No. W-27)",
+        category: "topi"
+    },
+    {
+        id: 13,
+        name: "Quran Ref. 123 Qp 15 Lines Hafzi",
+        image: "images/quran.webp",
+        oldPrice: 699,
+        newPrice: 399,
+        description: "Printed On Premium Quran Paper | Saudi Quality 20 14.5 Cms Blue",
+        category: "topi"
+    },
+    {
+        id: 14,
+        name: "Al Quran Pocket Size Color-Ref No 119",
+        image: "images/pocket.webp",
+        oldPrice: 399,
+        newPrice: 179,
+        description: "",
+        category: "topi"
     }
 ];
 

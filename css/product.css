@@ -12,6 +12,7 @@
 
 .product-image {
     flex: 1;
+    width: 100%;
     background: #ffffff;
     border-radius: 16px;
     padding: 30px;
@@ -35,6 +36,7 @@
 /* ===== INFO SECTION ===== */
 
 .product-info {
+    width: 100%;
     padding: 22px;
     flex: 1;
     display: flex;
