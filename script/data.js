@@ -28,7 +28,7 @@ const PRODUCTS = [
     },
     {
         id: 4,
-        name: "Al-Nuaim Delicia a Premium Attar",
+        name: "Al-Nuaim Delicia a Premium Attar 9.9ml",
         image: "images/delicia.PNG",
         oldPrice: 250,
         newPrice: 180,
@@ -55,7 +55,7 @@ const PRODUCTS = [
     },
     {
         id: 7,
-        name: "Al-nuaim Black Orchid 9.9ml Attar ",
+        name: "Al-nuaim Black Orchid 9.9ml ",
         image: "images/orchid.JPG",
         oldPrice: 285,
         newPrice: 220,
